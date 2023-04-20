@@ -1,9 +1,5 @@
 #TP5 Arcade Mehdi Serge Lavoie 406
-
-
 import arcade
-
-
 IMAGE_WIDTH = 1024
 IMAGE_HEIGHT = 1024
 IMAGE_TITLE = "Beautiful House With Sun"
