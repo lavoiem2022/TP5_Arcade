@@ -1,22 +1,61 @@
+#TP5 Arcade Mehdi Serge Lavoie 406
+
+
 import arcade
-import random
-
-SCREEN_WIDTH = 640
-SCREEN_HEIGHT = 480
-WINDOW_TITLE = "Je suis Arcane"
-
-arcade.open_window(SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE)
-arcade.set_background_color(arcade.color.SKY_BLUE)
-arcade.start_render()
 
 
-arcade.draw_lrtb_rectangle_filled(
-    0,
-    SCREEN_WIDTH, SCREEN_HEIGHT / 4,
-    0,
-    arcade.csscolor.DARK_GOLDENROD)
-
-arcade.finish_render()
-arcade.run()
+IMAGE_WIDTH = 1024
+IMAGE_HEIGHT = 1024
+IMAGE_TITLE = "Beautiful House With Sun"
 
 
+def draw_background():
+    # Le ciel
+    arcade.draw_lrtb_rectangle_filled(0, IMAGE_WIDTH, IMAGE_HEIGHT,
+                                      IMAGE_HEIGHT * (1 / 3), arcade.color.SKY_BLUE)
+    # La terre
+    arcade.draw_lrtb_rectangle_filled(0, IMAGE_WIDTH, IMAGE_HEIGHT / 3, 0, arcade.color.DARK_SPRING_GREEN)
+
+
+def draw_sun(x, y):
+    radius = 75
+    arcade.draw_circle_filled(x, y, radius, arcade.color.AMBER)
+    # Soleil (Rayon)
+    arcade.draw_line(x, y, x - 100, y, arcade.color.AMBER, 3)
+    arcade.draw_line(x, y, x + 100, y, arcade.color.AMBER, 3)
+    arcade.draw_line(x, y, x, y + 100, arcade.color.AMBER, 3)
+    arcade.draw_line(x, y, x, y - 100, arcade.color.AMBER, 3)
+    arcade.draw_line(x, y, x + 100, y + 100, arcade.color.AMBER, 3)
+    arcade.draw_line(x, y, x + 100, y - 100, arcade.color.AMBER, 3)
+    arcade.draw_line(x, y, x - 100, y + 100, arcade.color.AMBER, 3)
+    arcade.draw_line(x, y, x - 100, y - 100, arcade.color.AMBER, 3)
+
+
+def draw_cloud(x, y):
+    #Cloud
+    arcade.draw_ellipse_filled(x - 50, y, x / 20 * 3, 35, arcade.csscolor.WHITE)
+    arcade.draw_ellipse_filled(x + 50, y, x / 20 * 3, 35, arcade.csscolor.WHITE)
+    arcade.draw_ellipse_filled(x + 150, y, x / 20 * 3, 35, arcade.csscolor.WHITE)
+
+
+
+def main():
+    arcade.open_window(IMAGE_WIDTH, IMAGE_HEIGHT, IMAGE_TITLE)
+    arcade.start_render()
+
+    # Arriere plan
+    draw_background()
+
+    #Soleil
+    draw_sun(130, 900)
+
+    #Nuage
+    draw_cloud(700, 900)
+
+    arcade.finish_render()
+    arcade.run()
+
+
+if __name__ == "__main__":
+
+    main()
