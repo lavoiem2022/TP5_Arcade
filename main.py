@@ -12,6 +12,11 @@ def draw_background():
     # La terre
     arcade.draw_lrtb_rectangle_filled(0, IMAGE_WIDTH, IMAGE_HEIGHT / 3, 0, arcade.color.DARK_SPRING_GREEN)
 
+def draw_maison(x, y):
+    arcade.draw_rectangle_filled(center_x = x,center_y = y,
+                                width=300, height=y-200 ,
+                                color = arcade.color.DARK_BROWN)
+    arcade.draw_triangle_filled(x-150,y + (y-200)/2, x+150,y +(y-200)/2, x,y + 300, color=arcade.color.YELLOW)
 
 def draw_sun(x, y):
     radius = 75
@@ -47,6 +52,9 @@ def main():
 
     #Nuage
     draw_cloud(700, 900)
+
+    draw_maison(500, 400)
+
 
     arcade.finish_render()
     arcade.run()
